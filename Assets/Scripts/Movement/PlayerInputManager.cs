@@ -5,9 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
-	PlayerInputActions m_PlayerInput = null;
-	Player m_Player = null;
+	PlayerInputActions m_PlayerInput = null;	// The input map being used
+	Player m_Player = null;						// A reference to the player script
 
+	/// <summary>
+	/// Called when the script is being loaded,
+	// Assigns functions to the input maps actions
+	/// </summary>
 	private void Awake()
 	{
 		m_PlayerInput = new PlayerInputActions();
@@ -18,10 +22,13 @@ public class PlayerInputManager : MonoBehaviour
 		m_PlayerInput.Player.Movement.canceled += ctx => OnMovementPress(ctx);
 	}
 
+	/// <summary>
+	/// Called before first frame
+	/// Initializes variables
+	/// </summary>
 	private void Start()
 	{
-		m_Player = Player.Instance;
-		
+		m_Player = Player.Instance;	
 	}
 
 	/// <summary>
@@ -43,19 +50,30 @@ public class PlayerInputManager : MonoBehaviour
 	private void OnMovementPress(InputAction.CallbackContext ctx)
 	{
 		m_Player.Movement.Movement(ctx.ReadValue<Vector2>());
-		Debug.Log("Player Input: Movement pressed" + ctx.ReadValue<Vector2>());
 	}
 
+	/// <summary>
+	/// Called every frame,
+	/// Updates the mouse position
+	/// </summary>
 	private void Update()
 	{
-		m_Player.Movement.UpdateMousePos(m_PlayerInput.Player.MousePosition.ReadValue<Vector2>());
+		m_Player.Movement.MousePosition = m_PlayerInput.Player.MousePosition.ReadValue<Vector2>();
 	}
 
+	/// <summary>
+	/// Called when the script is active
+	/// Enables the input system
+	/// </summary>
 	private void OnEnable()
 	{
 		m_PlayerInput.Enable();
 	}
 
+	/// <summary>
+	/// Called when the script is deactivated
+	/// Disables the input system
+	/// </summary>
 	private void OnDisable()
 	{
 		m_PlayerInput.Disable();

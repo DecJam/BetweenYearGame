@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A class that manages all Inputs from the player
+/// A class that manages and references all scripts relating to the player
 /// </summary>
 public class Player : MonoBehaviour
 {
@@ -11,8 +11,7 @@ public class Player : MonoBehaviour
 
     [Header("Attached Scripts")]
 	[SerializeField] public PlayerMovement Movement = null;                 // The player's movement script
-    [SerializeField] public PlayerInputManager Input = null;                       // The player's input script
-
+    [SerializeField] public PlayerInputManager Input = null;                // The player's input script
 
     private static Player m_Instance;                                       // The current instance of the player
     public static Player Instance                                           // The public current instance of MenuController
