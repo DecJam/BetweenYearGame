@@ -59,6 +59,7 @@ public class PlayerInputManager : MonoBehaviour
 	private void Update()
 	{
 		m_Player.Movement.MousePosition = m_PlayerInput.Player.MousePosition.ReadValue<Vector2>();
+		m_Player.m_Weapon.GetComponent<Gun>().FirePressed = m_PlayerInput.Player.FireWeapon.ReadValue<float>() > 0; 
 	}
 
 	/// <summary>

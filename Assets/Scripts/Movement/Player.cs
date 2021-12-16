@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] public CharacterController characterController = null;  // The player's rigidbody
 
+    [SerializeField] public GameObject m_Weapon = null;
+
     [Header("Attached Scripts")]
 	[SerializeField] public PlayerMovement Movement = null;                 // The player's movement script
     [SerializeField] public PlayerInputManager Input = null;                // The player's input script

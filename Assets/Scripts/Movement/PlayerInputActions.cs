@@ -53,6 +53,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""FireWeapon"",
+                    ""type"": ""Value"",
+                    ""id"": ""7750bd78-cd4e-410d-9bb6-a475411dd868"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -143,6 +152,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a0af34f-dd69-4ec5-88de-93bb3ebbf71d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FireWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -171,6 +191,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
+        m_Player_FireWeapon = m_Player.FindAction("FireWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -233,6 +254,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_MousePosition;
+    private readonly InputAction m_Player_FireWeapon;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -240,6 +262,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
+        public InputAction @FireWeapon => m_Wrapper.m_Player_FireWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +281,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MousePosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePosition;
+                @FireWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireWeapon;
+                @FireWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireWeapon;
+                @FireWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireWeapon;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -271,6 +297,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @FireWeapon.started += instance.OnFireWeapon;
+                @FireWeapon.performed += instance.OnFireWeapon;
+                @FireWeapon.canceled += instance.OnFireWeapon;
             }
         }
     }
@@ -289,5 +318,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnFireWeapon(InputAction.CallbackContext context);
     }
 }
