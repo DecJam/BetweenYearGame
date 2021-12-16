@@ -16,7 +16,7 @@ public class PlayerInputManager : MonoBehaviour
 	{
 		m_PlayerInput = new PlayerInputActions();
 
-		m_PlayerInput.Player.Jump.started += ctx => OnJumpPressed(ctx);
+		//m_PlayerInput.Player.Jump.started += ctx => OnJumpPressed(ctx);
 
 		m_PlayerInput.Player.Movement.performed += ctx => OnMovementPress(ctx);
 		m_PlayerInput.Player.Movement.canceled += ctx => OnMovementPress(ctx);
@@ -36,11 +36,11 @@ public class PlayerInputManager : MonoBehaviour
 	/// Changes the jump value
 	/// </summary>
 	/// <param name="ctx">The context of the input</param>
-	private void OnJumpPressed(InputAction.CallbackContext ctx)
-	{
-		m_Player.Movement.Jump();
-		Debug.Log("Player Input: Jump pressed");
-	}
+	//private void OnJumpPressed(InputAction.CallbackContext ctx)
+	//{
+	//	m_Player.Movement.Jump();
+	//	Debug.Log("Player Input: Jump pressed");
+	//}
 
 	/// <summary>
 	/// Called when a "movement" key is pressed and released,

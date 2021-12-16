@@ -70,6 +70,7 @@ public class Bullet : MonoBehaviour
 					gameObject.transform.forward = gameObject.transform.forward - (perp * hit.normal);
 				}
 			}
+
 			else
 			{
 				gameObject.SetActive(false);
