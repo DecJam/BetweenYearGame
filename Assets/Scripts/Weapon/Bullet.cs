@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
 			}
 			else
 			{
-				OnFinalHit();
+				OnFinalHit(hit.transform.gameObject);
 			}
 		}
 
@@ -87,13 +87,17 @@ public class Bullet : MonoBehaviour
 		gameObject.SetActive(true);
 	}
 
-	private void OnFinalHit()
+	private void OnFinalHit(GameObject obj)
 	{
 		gameObject.SetActive(false);
 		if (m_ExplodeOnImpact)
 		{
-			GameObject obj = PoolManager.Instance.SpawnFromPool("Explosion", transform.position, transform.rotation);
-			obj.GetComponent<Explode>().Spawn(transform.position);
+			GameObject newObj = PoolManager.Instance.SpawnFromPool("Explosion", transform.position, transform.rotation);
+			newObj.GetComponent<Explode>().Spawn(transform.position);
+		}
+		if (obj.tag == "Enemy")
+		{
+			obj.GetComponent<TempEnemy>().TakeDamage(m_Damage, m_BleedingDamage);
 		}
 	}
 	private void OnTriggerEnter(Collider other)
@@ -117,12 +121,12 @@ public class Bullet : MonoBehaviour
 			if(m_Piercing && m_PiercingLeft > 0)
 			{
 				m_PiercingLeft--;
-
+				other.gameObject.GetComponent<TempEnemy>().TakeDamage(m_Damage, m_BleedingDamage);
 			}
 
 			else
 			{
-				OnFinalHit();
+				OnFinalHit(other.gameObject);
 			}
 		}
 	}
