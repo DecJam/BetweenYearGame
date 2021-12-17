@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState
+{
+    Dead,
+    Alive
+}
+
 /// <summary>
 /// A class that manages and references all scripts relating to the player
 /// </summary>
@@ -14,6 +20,8 @@ public class Player : MonoBehaviour
     [Header("Attached Scripts")]
 	[SerializeField] public PlayerMovement Movement = null;                 // The player's movement script
     [SerializeField] public PlayerInputManager Input = null;                // The player's input script
+
+    public PlayerState State = PlayerState.Alive;
 
     private static Player m_Instance;                                       // The current instance of the player
     public static Player Instance                                           // The public current instance of MenuController
@@ -29,4 +37,8 @@ public class Player : MonoBehaviour
         else
             m_Instance = this;
     }
+    public GameObject GetPlayer()
+	{
+        return gameObject;
+	}
 }
