@@ -13,7 +13,7 @@ public class EnemyStats : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(m_Health >= 0)
+        if(m_Health <= 0)
 		{
             Die();
 		}
