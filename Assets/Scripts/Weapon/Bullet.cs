@@ -83,7 +83,6 @@ public class Bullet : MonoBehaviour
 		m_PiercingAmount = piercingAmount;
 		m_BouncesLeft = m_BounceAmount;
 		m_PiercingLeft = m_PiercingAmount;
-	
 		gameObject.SetActive(true);
 	}
 
@@ -93,11 +92,11 @@ public class Bullet : MonoBehaviour
 		if (m_ExplodeOnImpact)
 		{
 			GameObject newObj = PoolManager.Instance.SpawnFromPool("Explosion", transform.position, transform.rotation);
-			newObj.GetComponent<Explode>().Spawn(transform.position);
+			newObj.GetComponent<Explode>().Spawn(transform.position, obj.transform);
 		}
 		if (obj.tag == "Enemy")
 		{
-			obj.GetComponent<TempEnemy>().TakeDamage(m_Damage, m_BleedingDamage);
+			obj.GetComponent<EnemyController>().EnemyStats.TakeDamage(m_Damage, m_BleedingDamage);
 		}
 	}
 	private void OnTriggerEnter(Collider other)
@@ -121,7 +120,7 @@ public class Bullet : MonoBehaviour
 			if(m_Piercing && m_PiercingLeft > 0)
 			{
 				m_PiercingLeft--;
-				other.gameObject.GetComponent<TempEnemy>().TakeDamage(m_Damage, m_BleedingDamage);
+				other.gameObject.GetComponent<EnemyController>().EnemyStats.TakeDamage(m_Damage, m_BleedingDamage);
 			}
 
 			else

@@ -18,9 +18,10 @@ public class Explode : MonoBehaviour
 		}
     }
 
-    public void Spawn(Vector3 position)
+    public void Spawn(Vector3 position, Transform parent)
 	{
         gameObject.transform.position = position;
+        gameObject.transform.parent = parent;
         timer = 0;
 	}
 }
