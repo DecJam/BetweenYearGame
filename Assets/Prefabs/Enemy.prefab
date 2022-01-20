@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 5094312831106806841}
   - component: {fileID: 5094312831106806846}
   - component: {fileID: 5094312831106806847}
-  - component: {fileID: 5094312831106806844}
-  - component: {fileID: 6199411296342704890}
-  - component: {fileID: 4422633569058304958}
+  - component: {fileID: -3949563850038285850}
+  - component: {fileID: 8090274632794181803}
+  - component: {fileID: 7219062019881540882}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -173,7 +173,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &5094312831106806844
+--- !u!114 &-3949563850038285850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,14 +182,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5094312831106806845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2268b6560cc07f74b80409691188ef16, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bfc9c842f3469642a278d4055c80c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GFX: {fileID: 5094312830031351847}
-  EnemyStats: {fileID: 6199411296342704890}
-  EnemyMovement: {fileID: 4422633569058304958}
-  EnemySpawner: {fileID: 0}
---- !u!114 &6199411296342704890
+  m_LookRadius: 20
+--- !u!114 &8090274632794181803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,7 +202,7 @@ MonoBehaviour:
   m_CurrentHealth: 0
   m_Damage: 1
   m_Bleed: 0
---- !u!114 &4422633569058304958
+--- !u!114 &7219062019881540882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +211,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5094312831106806845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bfc9c842f3469642a278d4055c80c1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2268b6560cc07f74b80409691188ef16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookRadius: 20
+  GFX: {fileID: 5094312830031351847}
+  EnemyStats: {fileID: 8090274632794181803}
+  EnemyMovement: {fileID: -3949563850038285850}
+  EnemySpawner: {fileID: 0}

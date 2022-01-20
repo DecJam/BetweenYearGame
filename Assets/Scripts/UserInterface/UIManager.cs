@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
 	[SerializeField] public UIController UIController = null;
-
+    [SerializeField] public SettingsUI SettingsUI = null;
     private static UIManager m_Instance;                                       
     public static UIManager Instance                                           
     {

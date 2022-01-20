@@ -88,6 +88,7 @@ public class UIController : MonoBehaviour
 	public void LoadSettingsUI()
 	{
 		m_UIStack.Push(UIState.Settings);
+		UIManager.Instance.SettingsUI.LoadSound();
 		OnExitPreviousUI();
 		UpdateUI();
 	}

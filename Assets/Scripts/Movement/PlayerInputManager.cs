@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
-	PlayerInputActions m_PlayerInput = null;	// The input map being used
-	Player m_Player = null;						// A reference to the player script
+	PlayerInputActions m_PlayerInput = null;    // The input map being used
+	Player m_Player = null;                     // A reference to the player script
 
 	/// <summary>
 	/// Called when the script is being loaded,
@@ -30,7 +30,7 @@ public class PlayerInputManager : MonoBehaviour
 	/// </summary>
 	private void Start()
 	{
-		m_Player = Player.Instance;	
+		m_Player = Player.Instance;
 	}
 
 	/// <summary>
@@ -68,7 +68,7 @@ public class PlayerInputManager : MonoBehaviour
 	private void Update()
 	{
 		m_Player.Movement.MousePosition = m_PlayerInput.Player.MousePosition.ReadValue<Vector2>();
-		m_Player.m_Weapon.GetComponent<Gun>().FirePressed = m_PlayerInput.Player.FireWeapon.ReadValue<float>() > 0; 
+		m_Player.m_Weapon.GetComponent<Gun>().FirePressed = m_PlayerInput.Player.FireWeapon.ReadValue<float>() > 0;
 	}
 
 	/// <summary>

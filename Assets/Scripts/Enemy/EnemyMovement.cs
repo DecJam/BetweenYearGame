@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float m_LookRadius = 20.0f;
     private Transform m_Target = null;
     NavMeshAgent m_Agent = null;
+   
 
     // Start is called before the first frame update
     void Start()
